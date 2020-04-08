@@ -41,6 +41,11 @@ public class MVector<A extends Info>
     }
   }
 
+  /** Default constructor that creates an empty vector. */
+  public MVector() {
+    vec = new Object[0];
+  }
+
   /** Returns value at INDEX. */
   public A get(int index) {
     return (A)vec[index];
