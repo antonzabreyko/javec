@@ -9,8 +9,8 @@ public interface Info<A> {
     public A get();
 
     /** Method that allows adding of values. */
-    public A add(A a);
+    public Info<A> add(Info<A> a);
 
     /** Method that allows multiplication of values. */
-    public A mul(A a);
+    public Info<A> mul(Info<A> a);
 }
