@@ -41,4 +41,21 @@ public class MInteger implements Info<Integer> {
     public String toString() {
         return this.value+"";
     }
+
+    @Override
+    public int intDiv(Info<Integer> a) {
+        try {
+            MInteger other = (MInteger)a;
+            return this.value/a.get();
+        }
+        catch (ClassCastException e) {
+            System.out.println(e.getMessage());
+            return -1;
+        }
+    }
+
+    @Override
+    public MInteger div(Info<Integer> a) {
+        return new MInteger(intDiv(a));
+    }
 }

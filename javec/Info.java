@@ -13,4 +13,10 @@ public interface Info<A> {
 
     /** Method that allows multiplication of values. */
     public Info<A> mul(Info<A> a);
+
+    /**Method that allows division resulting in doubles of the values. */
+    public int intDiv(Info<A> a);
+
+    /**Method that allows division resulting in another value of the same type. */
+    public Info<A> div(Info<A> a);
 }
