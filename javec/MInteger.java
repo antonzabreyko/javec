@@ -36,4 +36,9 @@ public class MInteger implements Info<Integer> {
             return null;
         }
     }
+
+    @Override
+    public String toString() {
+        return this.value+"";
+    }
 }

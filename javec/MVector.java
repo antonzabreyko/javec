@@ -4,7 +4,7 @@ package javec;
  * @author: Anton Zabreyko
  */
 
-public class MVector<A>
+public class MVector<A extends Info>
 {
   /** Object array that stores the values. */
   private Object[] vec;
@@ -53,17 +53,23 @@ public class MVector<A>
 
   /**Prints out the vector. */
   public String toString() {
-    String string = "[";
+    if(vec.length == 0) {
+      return "";
+    }
+
+    String string;
     if(!transpose) {
-      for(int i = 0; i<vec.length-1; i++) {
-        string += vec[i] + "\n";
-      }
-      string += vec[vec.length-1] + "]";
-    } else {
-      for(int i = 0; i<vec.length-1; i++) {
-        string += vec[i] + " ";
+      string = "[" +vec[0].toString();
+      for(int i = 1; i<vec.length; i++) {
+        string += "\n " + vec[i].toString();
       }
       string += "]";
+    } else {
+      string = "[";
+      for(int i = 0; i<vec.length-1; i++) {
+        string += vec[i].toString() + " ";
+      }
+      string += vec[vec.length-1].toString() + "]";
     }
     return string;
   }
