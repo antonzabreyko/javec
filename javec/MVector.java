@@ -6,16 +6,21 @@ package javec;
 
 public class MVector<A>
 {
-  /** Object representation of a vector. Based on an array. */
-
+  /** Object array that stores the values. */
   private Object[] vec;
+
+  /** Boolean that controls whether or not the vector is transposed. Default(false) is column. */
   private boolean transpose;
+
+  /** Int representing the dimension of the vector. */
+  public int dimension;
 
   /** Constructor that takes in an arbitrary number of args and sets up a vector. */
   public MVector(A... args)
   {
     vec = new Object[args.length];
     transpose = false;
+    dimension = args.length;
 
     for(int i = 0; i<args.length; i++) {
       vec[i] = args[i];
@@ -29,11 +34,11 @@ public class MVector<A>
 
     vec = new Object[args.length];
     this.transpose = transpose;
+    dimension = args.length;
 
     for(int i = 0; i<args.length; i++) {
       vec[i] = args[i];
     }
-
   }
 
   /** Returns value at INDEX. */
@@ -60,10 +65,6 @@ public class MVector<A>
       }
       string += "]";
     }
-
-
     return string;
   }
-
-
 }
