@@ -73,4 +73,19 @@ public class MVector<A extends Info>
     }
     return string;
   }
+
+  /** Returns the dot product of this vector and the given vector other. */
+  public A dot(MVector<A> other) {
+    if(other.dimension != this.dimension) {
+      System.out.println("Invalid Dimensions! Was expecting "+this.dimension+" but got "+other.dimension+".");
+      return null;
+    } else if(this.dimension == 0) {
+      return null;
+    }
+    A sum = (A)this.get(0).mul(other.get(0));
+    for(int i = 1; i<other.dimension; i++) {
+      sum = (A)sum.add(this.get(i).mul(other.get(i)));
+    }
+    return sum;
+  }
 }
