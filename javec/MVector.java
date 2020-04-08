@@ -42,7 +42,28 @@ public class MVector<A>
   }
 
   /** Changes the transpose of the vector. */
-  private void setTranspose() {
+  public void transpose() {
     transpose = !transpose;
   }
+
+  /**Prints out the vector. */
+  public String toString() {
+    String string = "[";
+    if(!transpose) {
+      for(int i = 0; i<vec.length-1; i++) {
+        string += vec[i] + "\n";
+      }
+      string += vec[vec.length-1] + "]";
+    } else {
+      for(int i = 0; i<vec.length-1; i++) {
+        string += vec[i] + " ";
+      }
+      string += "]";
+    }
+
+
+    return string;
+  }
+
+
 }
