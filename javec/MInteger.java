@@ -43,7 +43,7 @@ public class MInteger implements Info<Integer> {
     }
 
     @Override
-    public int intDiv(Info<Integer> a) {
+    public double doubleDiv(Info<Integer> a) {
         try {
             MInteger other = (MInteger)a;
             return this.value/a.get();
@@ -56,6 +56,6 @@ public class MInteger implements Info<Integer> {
 
     @Override
     public MInteger div(Info<Integer> a) {
-        return new MInteger(intDiv(a));
+        return new MInteger((int)doubleDiv(a));
     }
 }
