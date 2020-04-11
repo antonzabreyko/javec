@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public class Matrix<A extends Info> {
 
     /** ArrayList representation of the matrix. */
-    private ArrayList<MVector<A>> mat;
+    private ArrayList<A[]> mat;
     private int dimension = 0;
 
     /**Default constructor for matrix, creates an empty matrix. */
     public Matrix() {
-        mat = new ArrayList<MVector<A>>();
+        mat = new ArrayList<A[]>();
         dimension = 0;
     }
 
@@ -35,4 +35,6 @@ public class Matrix<A extends Info> {
         MVector<A> v = new MVector<A>(arr);
         return add(v);
     }
+
+
 }
