@@ -1,5 +1,7 @@
 package javec;
 
+import java.util.ArrayList;
+
 /** Object representation of a vector. Based on an array.
  * @author: Anton Zabreyko
  */
@@ -93,6 +95,23 @@ public class MVector<A extends Info>
     }
     return sum;
   }
+
+  public Object[] toArray() {
+    Object[] arr = new Object[this.dimension];
+    for(int i = 0; i<vec.length; i++) {
+      arr[i] = vec[i];
+    }
+    return arr;
+  }
+
+  public ArrayList<A> toArrayList() {
+    ArrayList<A> arr = new ArrayList<A>();
+    for(int i = 0; i<vec.length; i++) {
+      arr.add((A)vec[i]);
+    }
+    return arr;
+  }
+
 
 
 
