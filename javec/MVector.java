@@ -3,7 +3,7 @@ package javec;
 import java.util.ArrayList;
 
 /** Object representation of a vector. Based on an array.
- * @author: Anton Zabreyko
+ * @author: Anton A. Zabreyko
  */
 
 public class MVector<A extends Info>
@@ -18,24 +18,11 @@ public class MVector<A extends Info>
   public int dimension;
 
   /** Constructor that takes in an arbitrary number of args and sets up a vector. */
+  @SafeVarargs
   public MVector(A... args)
   {
     vec = new Object[args.length];
     transpose = false;
-    dimension = args.length;
-
-    for(int i = 0; i<args.length; i++) {
-      vec[i] = args[i];
-    }
-  }
-
-  /**Alternative constructor that takes in both arbitrary number of args and a variable determining whether or not the
-   * vector is transposed.
-   */
-  public MVector(boolean transpose, A... args) {
-
-    vec = new Object[args.length];
-    this.transpose = transpose;
     dimension = args.length;
 
     for(int i = 0; i<args.length; i++) {

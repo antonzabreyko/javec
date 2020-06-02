@@ -1,7 +1,7 @@
 package javec;
 
-/**Wrapper object meant to be implemented according to specifications in order to be utilized in MVector.
- * @author: Anton Zabreyko
+/** Wrapper object meant to be implemented according to specifications in order to be utilized in MVector.
+ * @author: Anton A. Zabreyko
  * */
 public interface Info<A> {
 
@@ -14,7 +14,7 @@ public interface Info<A> {
     /** Method that allows multiplication of values. */
     public Info<A> mul(Info<A> a);
 
-    /**Method that allows division resulting in doubles of the values. */
+    /**Method that allows division resulting in doubles. */
     public double doubleDiv(Info<A> a);
 
     /**Method that allows division resulting in another value of the same type. */
