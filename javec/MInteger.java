@@ -1,5 +1,8 @@
 package javec;
 
+/** Implementation of Info interface for Integer behavior.
+ * @author Anton A. Zabreyko
+ * */
 public class MInteger implements Info<Integer> {
 
     private int value;
