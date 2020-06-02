@@ -1,39 +1,46 @@
 package javec;
 
 /** Object representation of a matrix.
- * @author: Anton Zabreyko
+ * @author: Anton A. Zabreyko
  */
 import java.util.ArrayList;
 
 public class Matrix<A extends Info> {
 
-    /** ArrayList representation of the matrix. */
-    private ArrayList<A[]> mat;
-    private int dimension = 0;
+    /** 2D ArrayList representation of the matrix. */
+    private ArrayList<ArrayList<A>> mat;
+
+    /** The number of rows in the matrix. */
+    private int rows;
+
+    /** The number of columns in the matrix. */
+    private int cols;
 
     /**Default constructor for matrix, creates an empty matrix. */
     public Matrix() {
-        mat = new ArrayList<A[]>();
-        dimension = 0;
+        mat = new ArrayList<ArrayList<A>>();
+        rows = 0;
+        cols = 0;
     }
 
-    /**Attempts to add the vector to the matrix, and returns true or false depending on whether or not it was successful.
-     * Its success is dependent on the dimensions lining up. */
-    public boolean add(MVector v) {
-        if(dimension == 0) {
-            mat.add(v);
-            return true;
-        } else if (dimension == v.dimension) {
-            mat.add(v);
-            return true;
+    /** Stacks given row into the matrix. Errors when length of the row does not match up with the
+     * number of columns, or when the data inside is not of type A. */
+    public void rowStack(Object[] row) {
+        if (row.length != cols) {
+            System.out.println(String.format("Invalid Dimensions! Was expecting %o, but got %o", cols, row.length));
         }
-        return false;
-    }
-
-    /**Attempts to add the array to the matrix, and returns true or false depending on whether or not it was successful. */
-    public boolean add(A[] arr) {
-        MVector<A> v = new MVector<A>(arr);
-        return add(v);
+        mat.add(new ArrayList<A>());
+        for (int i = 0; i < row.length; i++) {
+            Object obj = row[i];
+            try {
+                A data = (A)obj;
+                mat.get(mat.size()-1).add(data);
+            } catch (ClassCastException e) {
+                System.out.println(String.format("Object at index %o is not of the correct type!", i));
+                mat.remove(mat.size()-1);
+                return;
+            }
+        }
     }
 
 

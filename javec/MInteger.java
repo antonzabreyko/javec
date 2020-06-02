@@ -1,12 +1,15 @@
 package javec;
 
-/** Implementation of Info interface for Integer behavior.
+/** Implementation of Info interface for Integers. Value is simply the stored integer, and addition, multiplication,
+ * and division follow simply from Integer behavior.
  * @author Anton A. Zabreyko
  * */
 public class MInteger implements Info<Integer> {
 
+    /** Stores the value of the int. */
     private int value;
 
+    /** Constructor for the MInteger class. Takes in the integer it represents. */
     public MInteger(int value) {
         this.value = value;
     }
