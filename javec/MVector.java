@@ -69,10 +69,9 @@ public class MVector<A extends Info>
   }
 
   /** Returns the dot product of this vector and the given vector other. */
-  public A dot(MVector<A> other) {
+  public A dot(MVector<A> other) throws LinAlgException {
     if(other.dimension != this.dimension) {
-      System.out.println("Invalid Dimensions! Was expecting "+this.dimension+" but got "+other.dimension+".");
-      return null;
+      throw new LinAlgException("Invalid Dimensions! Was expecting "+this.dimension+" but got "+other.dimension+".");
     } else if(this.dimension == 0) {
       return null;
     }

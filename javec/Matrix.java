@@ -25,9 +25,9 @@ public class Matrix<A extends Info> {
 
     /** Stacks given row into the matrix. Errors when length of the row does not match up with the
      * number of columns, or when the data inside is not of type A. */
-    public void rowStack(Object[] row) {
+    public void rowStack(Object[] row) throws LinAlgException {
         if (row.length != cols) {
-            System.out.println(String.format("Invalid Dimensions! Was expecting %o, but got %o", cols, row.length));
+            throw new LinAlgException(String.format("Invalid Dimensions! Was expecting %o, but got %o", cols, row.length));
         }
         mat.add(new ArrayList<A>());
         for (int i = 0; i < row.length; i++) {
