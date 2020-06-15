@@ -26,6 +26,7 @@ public class Matrix<A extends Info> {
     /** Stacks given row into the matrix. Errors when length of the row does not match up with the
      * number of columns, or when the data inside is not of type A. */
     public void rowStack(Object[] row) throws LinAlgException {
+        checkInit();
         if (row.length != cols) {
             throw new LinAlgException(String.format("Invalid Dimensions! Was expecting %o, but got %o", cols, row.length));
         }
@@ -41,6 +42,25 @@ public class Matrix<A extends Info> {
                 return;
             }
         }
+    }
+
+    private void checkInit() {
+        if (cols == 0) {
+
+        }
+    }
+
+    /** Returns a string representation of the matrix. */
+    public String toString() {
+        String str = "";
+        for (int i = 0; i < this.mat.size(); i++) {
+            str += "[";
+            for (int j = 0; j < this.mat.get(0).size(); j++) {
+                str += this.mat.get(i).get(j) + " ";
+            }
+            str += "]\n";
+        }
+        return str;
     }
 
 
