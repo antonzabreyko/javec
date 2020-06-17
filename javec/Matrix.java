@@ -41,6 +41,35 @@ public class Matrix<A extends Info> {
         }
     }
 
+    public Matrix<A> dot(Matrix<A> other) throws LinAlgException {
+        if (!checkValidity(this.dims(), other.dims())) {
+            throw new LinAlgException("Invalid dimensions!");
+        }
+        return new Matrix<A>();
+    }
+
+    /** Sets the given value a at the provided row and column, if that index exists. */
+    public void set(A a, int row, int col) throws LinAlgException {
+        if (row > this.rows || col > this.cols) {
+            throw new LinAlgException(String.format("Provided index does not exist in matrix! " +
+                    "Dimensions are (%o, %o)", this.rows, this.cols));
+        }
+        this.mat.get(row).set(col, a);
+    }
+
+    /** Checks to make sure that the provided dimensions match up for multiplication. */
+    private boolean checkValidity(int[] d1, int[] d2) {
+        if (d1[1] == d2[0]) {
+            return true;
+        }
+        return false;
+    }
+
+    /** Returns the dimensions of the matrix in the format [rows, columns]. */
+    public int[] dims() {
+        return new int[] {this.rows, this.cols};
+    }
+
     /** Checks to see whether or not a matrix has been initialized. */
     private boolean checkInit() {
         if (cols == 0) {
