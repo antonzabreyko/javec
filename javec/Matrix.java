@@ -1,8 +1,6 @@
 package javec;
 
-/** Object representation of a matrix.
- * @author: Anton A. Zabreyko
- */
+/** Object representation of a matrix. */
 import java.util.ArrayList;
 
 public class Matrix<A extends Info> {
@@ -53,14 +51,17 @@ public class Matrix<A extends Info> {
 
     /** Returns a string representation of the matrix. */
     public String toString() {
-        String str = "";
+        String str = "[";
         for (int i = 0; i < this.mat.size(); i++) {
-            str += "[";
             for (int j = 0; j < this.mat.get(0).size(); j++) {
                 str += this.mat.get(i).get(j) + " ";
             }
-            str += "]\n";
+            str += "\n";
         }
+        if (str.length() > 1) {
+            str = str.substring(0, str.length()-1);
+        }
+        str += "]";
         return str;
     }
 
