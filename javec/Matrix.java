@@ -14,11 +14,27 @@ public class Matrix<A extends Info> {
     /** The number of columns in the matrix. */
     private int cols;
 
-    /**Default constructor for matrix, creates an empty matrix. */
+    /** Default constructor for matrix, creates an empty matrix. */
     public Matrix() {
         mat = new ArrayList<ArrayList<A>>();
         rows = 0;
         cols = 0;
+    }
+
+    /** Sets up a matrix with dimensions (rows, cols), with default value a. */
+    public Matrix(int rows, int cols, A a) {
+        mat = new ArrayList<ArrayList<A>>();
+        this.rows = rows;
+        this.cols = cols;
+        for (int i = 0; i < rows; i++) {
+            mat.set(i, new ArrayList<A>());
+        }
+
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.cols; j++) {
+                this.mat.get(i).set(j, a);
+            }
+        }
     }
 
     /** Stacks given row into the matrix. Errors when length of the row does not match up with the
